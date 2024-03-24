@@ -1,0 +1,45 @@
+<html>
+
+{% load static %}
+
+<head>
+    <link href="{% static 'proyectoWebApp/css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'proyectoWebApp/css_bootstrap/bootstrap.min.css '%}" rel="stylesheet">
+
+</head>
+
+<body>
+      {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+  {% endif %}
+    <div>
+       <!-- <h1 class="mt-4" style="margin:center; text-align:center; font-family: arial; background: #37517e; color:white;">Registrarse</h1>-->
+        <h2 style="text-align:center; font-family: arial; background:#37517e; color:white; ">Registrarse para manipular el sistema hotelero</h2><br>
+    </div>
+    <br>
+   <!-- <a  href="{% url 'Inicio' %}"  style="font-size:15px; margin-left:30px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="" class="img-fluid">&nbsp; regresar a la página</a><br>-->
+    <br>
+    {% load crispy_forms_tags %}  <!--con esto le digo que me cargue las etiquetas del crispy-forms !-->
+    <div style="width :40%; margin:auto;">
+        <form method="post" action="" style="color: #37517e; font-weight:bold;">
+      
+           {% csrf_token %}  <!-- sirve para evitar problemas de seguridad !-->
+      
+            {{formRegistro|crispy}}     <!-- aca  contruimos el formulario con la variable form asi de simple, y con │crispy le decimos al formulario que use como filtro crispy !-->
+            <button type="submit" class="btn btn-info"> Registrarse <!-- añado el boton para enviar el formulario con la clase boostrap para darle estilo al boton !-->
+      
+              </button>
+          </form>
+<br>
+</body>
+
+
+
+
+
+</html>

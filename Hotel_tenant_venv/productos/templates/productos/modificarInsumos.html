@@ -1,0 +1,173 @@
+
+
+
+<html>
+    {% extends "proyectoWebApp/padre.html" %}
+{% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>MODIFICAR INSUMOS</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+       <!-- <link href="css/styles.css" rel="stylesheet" /> -->
+        <!-- <link href="{% static 'proyectoWebApp/css/styles_admin.css' %}" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>-->
+    </head>
+    <body class="sb-nav-fixed">
+
+      {% block content %}
+
+      {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+           
+
+
+           
+
+                <main>
+                    <h2 style="text-align:center; font-family: arial; background: #F39C12; color:white;">Tabla Insumos</h2>
+                   
+        
+                    
+                    <div class="container-fluid px-4">
+                     
+                       
+                        <!-- #37517e; color anterior -->
+
+                       <!-- <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>-->
+                      <!--  <div class="card mb-4">
+                            <div class="card-body">
+                               Selecciones en la tabla la habitacion a editar o eliminar
+                               <a  href="{% url 'Habitacion' %}">regresar a HABITACIONES</a>
+                                
+
+                            </div>
+                        </div>  -->
+                        
+                        <!--<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable Example
+                            </div>-->
+                           
+                            <div class="card-body">
+                                <h6 style="color:red; font-size:15px;">ED: editar EL: eliminar</h6>
+                                <table id="table_ejemploList" class="table table-striped table-bordered">
+                                    <thead style="background:#F5B7B1; color:black;">
+                                        <tr>
+                                            <th>OPCIONES</th>
+                                            <th>Nombre insumo</th>
+                                            <th>Marca insumo</th>
+                                            <th>Precio</th>
+                                            <th>Medida</th>
+                                            <th>Proveedor</th>
+                                            <th>Algun otro dato</th>
+                                            <th>Disponibilidad</th>
+                                            <th>fecha de actualizacion</th>
+                                            
+                                           
+                                           <!--  <th>ELIMINAR</th> -->
+
+                                        </tr>
+                                    </thead>
+                              <!--      <tfoot>
+                                       &lt;!&ndash; <tr>
+                                            <th>Nombre o numero</th>
+                                            <th>Capacidad</th>
+                                            <th>Camita bebe</th>
+                                            <th>Esta limpia</th>
+                                            <th>Posee heladera date</th>
+                                            <th>Posee aire acondicionado</th>
+                                            <th>Posee calefaccion</th>
+                                            <th>Posee ventana</th>
+                                            <th>Posee cama matrimonial</th>
+                                            <th>Posee televisor</th>
+                                            <th>Posee wifi</th>
+                                        </tr>&ndash;&gt;
+                                    </tfoot>-->
+                                    <tbody>
+                                    {%  for insumo in insumos %}
+                                    <tr>
+                                        <td>   
+                                            <div style="display:flex;">
+                                                <div title=editar>
+                                            <a href="{% url 'modificarTabla_insumos' insumo.id %}"> <button type="button" style="background: #37517e; color:white; border:none;">ED</button></a> &nbsp;
+                                                </div>
+                                                <div title=eliminar>
+                                        <a href="{% url 'eliminarInsumo' insumo.id %}"> <button type="button" style="background:#D6234A; color:white; border:none;"  onclick="this.disabled = true; this.form.submit();">EL</button></a></td>
+                                                </div>
+                                        </div> 
+                                        <td>{{insumo.nombre_insumos}}</td>
+                                        <td>{{insumo.marca_insumos}}</td>
+                                        <td>{{insumo.precio}}</td>
+                                        
+
+                                       
+                                        <td>{{insumo.medida}}</td>
+                                        <td>{{insumo.proveedor}}</td>
+                                        <td>{{insumo.algun_otro_dato}}</td>
+                                        <td>{{insumo.disponibilidad}}</td>
+                                        <td>{{insumo.updated}}</td>
+                                       
+                                      <!--  <div style="display:flex;"> -->
+                                        
+                                      
+                                      
+                                      <!--  <td> <a href="#"> <button type="button" style="background:blue; color:white;">modificar</button></a></td>
+                                        <td><a href="#"> <button type="button" style="background:red; color:white;">eliminar</button></a></td>-->
+
+
+
+                                    </tr>
+
+
+                                         {% endfor %}
+
+                                    </tbody>
+                                </table>
+                           
+                        </div>
+                        </div>
+               <!--     </div>      este div me aparecia con error -->
+        </main>
+        {% endblock%}
+       <br>
+       <br>
+
+
+
+               <!-- <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>-->
+            </div>
+        </div>
+      <!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'proyectoWebApp/js_admin/scripts.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{%  static 'proyectoWebApp/js_admin/datatables-simple-demo.js' %}"></script>-->
+    </body>
+</html>
+

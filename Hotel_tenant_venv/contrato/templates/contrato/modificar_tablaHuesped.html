@@ -1,0 +1,91 @@
+<html>
+
+{% extends "proyectoWebApp/padre.html" %}
+{% load static %}
+
+
+
+<head>
+   <!-- <link href="{% static 'proyectoWebApp/css/ContenedorFormulario.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">-->
+  
+
+
+</head>
+
+
+
+<body>
+    {% block content %}
+    {% load crispy_forms_tags %}
+    <h2 style=" text-align:center; font-family: arial; background:   #37517e; color:white; ">Modificar Huesped</h2><br>
+
+    <!--<a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px; " href="#"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar a la TABLA</a><br>
+    <a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px;" href="#"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar al HOME</a>-->
+    <br>
+   
+   
+  
+    <form method ="post"  class="ContenedorFormulario" style="margin:auto;">
+     {% csrf_token %}
+        <br>
+     
+  
+  
+  
+  
+  
+  
+   
+  <table>
+  
+  {{formHues|crispy}}
+  
+  
+   {% comment %} <h6  Style="font-weight:bold;">Penalidad</h6>
+  <div class ="form-check">
+    <label><input class="form-check-input" type="radio" name="penalidad" value="SI">Si</label> 
+    
+    
+    </div>
+    <div class ="form-check">
+      <label><input class="form-check-input" type="radio" name="penalidad" value="NO">No</label> 
+      
+      
+      </div> {% endcomment %}
+     
+  
+  
+  
+  </table>
+  
+  
+  
+  <br>
+  
+  
+  
+    <input type="submit" value="ACTUALIZAR" class="btn btn-info"><br><br>
+  <a href= "{% url 'modificarHuesped' %}"  style="margin:auto"><button type="button" class="btn btn-info">CANCELAR</button></a>
+  
+  
+  
+    </form>
+         
+        <br>
+        <br>
+        <br>
+    
+        
+        </div>
+{% endblock %}
+</body>
+
+
+</html>

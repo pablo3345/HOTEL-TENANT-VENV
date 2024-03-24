@@ -1,0 +1,231 @@
+
+<html>
+{% extends "proyectoWebApp/padre.html" %}
+ {% load static %}
+<head>
+
+</head>
+
+
+<body>
+ 
+   {% load crispy_forms_tags %}
+    {% block content %}
+
+   
+
+   {% if messages %}
+   {% for message in messages %}
+       <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+           {{ message }}
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+   {% endfor %}
+{% endif %}
+
+<!--<a  href="#"  style="font-size:23px; margin-left:990px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar al HOME</a>
+<a  href="#"  style="font-size:17px; margin-left:990px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logaut.png' %}" alt=""  style="width: 3em; height: 3em; margin-top:15px;">&nbsp; Cerrar Sesión</a>-->
+
+<!---------------------huesped de reserva para probar--------------------- ------------- ------ -->
+
+<!-- <h4  style="margin-left:85px;">Reservas</h4>
+ <form  method="GET" style="margin-left:85px;">
+   {% csrf_token %}
+
+   <select style="width:90%; font-size:14px;" class="form-control" name="hues" value={{usu.id}}>
+   {% for usu in Reservas %}
+ 
+  <option> Habitación: {{usu.habitacion}}, Huesped: {{usu.huesped}},  Ingreso: {{usu.fecha_entrada}}, Egreso: {{usu.fecha_salida}}</option>
+ 
+ 
+ 
+ 
+  
+
+
+
+{% endfor %}
+</select>
+<br>
+<input type="submit" value="enviar los datos de reserva al formulario" class="btn btn-info"><br><br>
+</form> -->
+
+<h2 style="background: #F39C12; color:white; font-family: arial; color:white; text-align:center;">Registrar Proveedor, Insumo, Productos de venta </h2>
+
+
+
+<!-------------volver atras------------------------------------------------ -->
+
+
+<div class="table-responsive">
+  <table style="border-collapse: separate; border-spacing: 40px;" class="table">
+    <thead>
+    
+    </thead>
+   
+    <tbody>
+      <tr>
+        <td>
+    <form method ="post"  style=" color: #F39C12;font-weight:bold;" id="formProveedores">
+   
+     {% csrf_token %}
+     
+     <h4 style= "background: black; color:white; text-align:center;">Proveedores</h4>
+     
+        <div>
+       {{formProveedor|crispy}}
+   
+    
+        </div>
+      
+  <!--volver atras-- ---- ------------------------------------------------ ------------ -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <br>
+  
+    <input type="submit" value="GUARDAR" class="btn btn-dark" id="guardar-btn8">
+    <br>
+    <br>
+    <p style = "font-size: 13px;">TABLA / EDITAR / ELIMINAR</p>
+  <br>
+    <a href= "{% url  'modificarProveedor' %}" ><button type="button" class="btn btn-dark" style="margin:auto;">TABLA</button></a>
+  
+  
+    </form>
+  </td >
+  <td>
+  <!-- ------------------------------ -SEGUNDO FORMULARIO INSUMOS-------------------------- --------------------------- -->
+  
+  <form  action="guardarInsumos" id="miFormulario2" method ="post" action="guardarInsumos"  style="color: #F39C12; font-weight:bold; margin-left:140px;">
+   
+    {% csrf_token %}
+    <h4 style= "background: black; color:white; text-align:center;">Insumos</h4>
+     
+    
+     
+       <div>
+      {{formInsumos|crispy}}
+  
+   <div>
+    
+     
+  
+  
+  
+  
+  
+  
+  
+  <br>
+  
+  
+  
+  
+   <input type="submit" value="GUARDAR" class="btn btn-dark" id="miBoton3">
+  
+   <br>
+   
+    <br>
+    <p style = "font-size: 13px;">TABLA / EDITAR / ELIMINAR</p>
+   <br>
+  
+   <a href= "{% url 'modificarInsumo' %}" ><button type="button" class="btn btn-dark" style="margin:auto;">TABLA</button></a>
+  
+  
+  
+  
+   </form>
+  </td>
+  
+  <!--    ------------------------------ TERCER FORMULARIO PRODUCTO AL PUBLICO-------------------- -->
+  
+  
+  <td>
+  
+   
+  <form action="guardarProducto" id="miFormulario3" method ="post" style="color: #F39C12; font-weight:bold; margin-left:150px;" >
+   
+    {% csrf_token %}
+   
+    <h4 style= "background: black; color:white; text-align:center;">Productos</h4>
+  
+     
+       <div>
+      {{formProductoPublico|crispy}}
+  
+       </div>
+
+       <br>
+
+ <input type="submit" value="GUARDAR" class="btn btn-dark" id="miBoton2">
+
+ <br>
+ <br>
+ <p style = "font-size: 13px;">TABLA / EDITAR / ELIMINAR</p>
+<br>
+ <a href= "{% url 'modificarProducto' %}" ><button type="button" class="btn btn-dark" style="margin:auto;">TABLA</button></a>
+
+ </form>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+
+<!--    --------------------------------------script insumos----------------------------------------------------- --- -->
+<script>
+  var boton2 = document.getElementById("miBoton3");
+
+  document.getElementById("miFormulario2").addEventListener("submit", function() {
+    boton2.disabled = true;
+   // alert("insumos");
+  });
+</script>
+<!-----------------------------------------------script proveedor------------------------------------------------------- -->
+<script>
+  var botonB = document.getElementById("guardar-btn8");
+
+  document.getElementById("formProveedores").addEventListener("submit", function() {
+    botonB.disabled = true;
+   // alert("proveedores");
+  });
+</script>
+<!--<script>
+  const btn2 = document.getElementById('guardar-btn8');
+  const form2 = document.querySelector('form');
+
+  form2.addEventListener('submit', () => {
+    btn2.disabled = true;
+    alert("proveedor");
+  });
+</script>-->
+<!--    --------------------------------------script productos----------------------------------------------------- --- -->
+<script>
+  var boton3 = document.getElementById("miBoton2");
+
+  document.getElementById("miFormulario3").addEventListener("submit", function() {
+    boton3.disabled = true;
+   // alert("productos");
+  });
+</script>
+
+
+{% endblock %}
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,91 @@
+<html>
+    {% extends "proyectoWebApp/padre.html" %}
+    {% load static %}
+<head>
+    <link href="{% static 'proyectoWebApp/css/style.css' %}" rel="stylesheet">
+</head>
+<!--para probar git  -------- -->
+<body>
+    {%block content %}
+
+   
+<!--<img src="{% static 'proyectoWebApp/img/logo-manual-usuario.png' %}" style="margin-left:60px; margin-top:50px;" class="img-fluid">-->
+<br>
+<br>
+<h2 style="background: black; color:white; text-align:center;">MANUAL PARA EL USUARIO</h2>
+
+
+<p style="margin-left: 50px; font-size:21px; margin-right:50px; font-weight:bold; color:black;">¡Muchas gracias por estar en nuestro software!</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:50px;">Como se aprecia en la imagen de abajo, el principal funcionamiento del programa es: primero cargar todas las habitaciones del hotel, segundo ir a contrato, registrar el
+     huesped y el contrato, o registrar reserva y enviar a contrato, luego ir al panel de administracón o desde la tabla.</p>
+   
+   
+   
+      
+      
+         
+     <!--volver atras -->
+     <img src="{% static 'proyectoWebApp/img/imagen-manual.png' %}" style="margin-left:90px; margin-top:50px;"  class="img-fluid">
+<!--<img src="{% static 'proyectoWebApp/img/imagen-manual.png' %}" style="margin-left:200px; margin-top:50px;" class="img-fluid">-->
+      
+ 
+
+<p style="margin-left:55px; font-size:19px; margin-top:50px; font-weight:bold; color:black;">Ahora analicemos el programa mas profundamente </p>
+<p style="margin-left: 60px; font-size:19px;  margin-top:50px; font-weight:bold; color:black;">HABITACIONES:</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:10px;">Ingresando en habitaciones podras observar el formulario y los botones de guardar la habitaciones
+    y el botón de ver tabla, en ver tabla se aprecia la tabla con el botón de editar(donde podras cambiar los datos de la habitación y luego guardar), el botón 
+de eliminar elimina la habitación. </p>
+<p style="margin-left: 60px; font-size:19px;  margin-top:50px; font-weight:bold; color:black;">CONTRATO:</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:10px;">Aquí podemos encontrar el formulario de registrar huesped y el de registrar contrato, en el de HUESPED vemos el botón de guardar y el de ver tabla,
+    en la tabla observamos varias funciones, explicaremos el botón de eliminar huesped, donde si elimina el huesped se perderán también los contratos 
+    de dicha persona, y la habitación relacionada a ese huesped con su contrato aparecera libre.<br>
+    Ahora analicemos el formulario de registrar CONTRATO, las habitaciones en el casillero solo aparecen las libres, hicimos las opciones de descuentos para que pueda utilizarlas en algunas promociones, asi también un aumento sobre el total.
+    En la fecha salida también puede agregar el horario de late check out, se calcula todo automaticamente.
+    En el botón de ver contratos activos, solo aparecerán los contratos que están a la fecha vigentes, y en el botón de ver todos los contratos 
+    aparecen todos los contratos activos y no activos.<br>
+    Ahora entremos a la tabla de contratos activos, si elimina un contrato automaticamente la habitación aparece como libre.
+   
+  <br>
+    Si quiere agregar el horario de Late check out, pulse en editar y agreguelo.<br>
+    También esta la opción de cambiar el total, pero el sistema ya calcula todo de forma automáticamente.
+    La opción de agregar productos, se usa por si quiere tener un control de lo que el huesped va consumiendo.<br>
+    Puede habilitar las habitaciones también desde la tabla de contratos a igual que desde Panel.<br>
+    Cada vez que el administrador hace un cambio en el contrato dicho administrador queda grabado en la tabla.<br>
+    En la tabla hay dos importes a cobrar, el total y el total de productos consumidos(aparecen ambos en color verde).
+    <p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">El horario del check out es a las 10:00, luego el horario del late check out es hasta las 17:59.</p>
+    <p  style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">Puede seleccionar varias opciones juntas como: (descuentos habitación por noche mas aumento al total), (descuento al total mas aumento al total), o aplicarlas cada una individualmente.<p/>
+        <p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">Puede colocar en el buscador de cada tabla una palabra un número y le apareceran dichos datos filtrados.</p>
+</p>
+<p style="margin-left: 60px; font-size:19px;  margin-top:50px; font-weight:bold; color:black;">PANEL DE ADMINISTRACIÓN:</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:10px;">En dicho panel se pueden habilitar las habitaciones ocupadas y las del después del plazo de estadia, y 
+    el botón actualizar estado es para actualizar el panel en caso que permanezca vario tiempo en la misma pestaña del Panel y haya algún cambio.
+</p>
+<p style="margin-left: 60px; font-size:19px;  margin-top:50px; font-weight:bold; color:black;">PROVEEDORES / INSUMOS / PRODUCTOS:</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:10px;">En estas tres tablas apretando el botón de ver tabla y sus respectivos botones de editar y eliminar, 
+    además en la tabla INSUMOS y PRODUCTOS tiene la opción de disponibilidad de stock, por el cual si hay poco stock le aparecerán un recordatorio. En la tabla el valor False significa poco stock.
+</p>
+<p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">Si elimina un proveedor, tambén se borrara los registros donde aparece dicho proveedor de las demás tablas.</p>
+<p style="margin-left: 60px; font-size:19px;  margin-top:50px; font-weight:bold; color:black;">RESERVA:</p>
+<p style="margin-left: 60px; font-size:19px; margin-right:50px; margin-top:10px;">En registrar Reserva es similar a registrar Contrato donde aquí podemos agregar el porcentaje de la seña a cobrar por la reserva, el check out y el late es igual a contrato.
+    En los botones VER RESERVAS Y LAS OPCIONES, podemos encontrar todas las reservas activas y las dentro del plazo, en el botón de VER TODAS LAS RESERVAS, observamos todas las reservas, canceladas o que las que ya paso el tiempo.<br>
+    En el botón E a C (enviar a contrato) tomamos los datos de la reserva y del huesped reserva y los enviamos a los formularios en Contrato, donde tendra que terminar de rellenar los datos en ambos formularios de contrato.<br>
+    Cuando envia los datos al formulario de Contrato y los guarda, también va el total de la seña, que luego en Contrato se restara del total al momento de efectuar el contrato.<br>
+    En la página donde está la tabla de reservas tenemos el botón de actualizar estado, el cual sirve por si alguna reserva paso el plazo y ya no aparece en la tabla de activas, dicho botón actualiza la tabla, aunque se actualiza sola cuando navega entre páginas del sistema.
+    También tenemos el calendario donde se aprecian las reservas activas graficadas.<br>
+    Muy importante en el formulario de reserva en el casillero de habitaciones aparecen todas libres y no libres, a diferencia de Contrato que solo aparecen las habitaciones libres (las habitaciones se habilitan desde el panel de administración para guardar en Contrato).<br>
+    <p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">El horario del check out es a las 10:00, luego el horario del late check out es hasta las 17:59.</p>
+    <p  style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">Puede seleccionar varias opciones juntas como: (descuentos habitación por noche mas aumento al total), (descuento al total mas aumento al total), incluyendo el porcentaje de la seña o aplicarlas cada una individualmente.<p/>
+        <p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">Puede colocar en el buscador de cada tabla una palabra un número y le apareceran dichos datos filtrados.</p>
+       <!-- <p style= "margin-left: 60px; font-size:19px; margin-right:50px; font-weight:bold;">En la cabecera de cada tabla puede hacer click en el nombre de la columna para ordenar los registros.</p>-->
+
+
+
+
+<br>
+<h2 style="background: black; color:black; text-align:center;">.</h2>
+   
+{%endblock%}
+</body>
+
+
+</html>

@@ -1,0 +1,36 @@
+
+<html>
+    {% load static %}
+
+
+  
+            <div class="modal fade"  id="id_eliminarContrato{{contrato.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>¿Está seguro que desea eliminar el contrato seleccionado? {{contrato.huesped}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
+                      <form action="{% url 'eliminarContrato' contrato.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" id="almacen_id"/>
+                       <!-- <button type="submit" class="btn btn-danger">Eliminar</button> --> 
+                       <button type="submit" class="btn btn-danger" onclick="this.disabled = true; this.form.submit();">Eliminar</button>
+                      </form>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+  
+        <!--volver atras---- ------------------------------    ------------  -----------   --->
+
+  </html>

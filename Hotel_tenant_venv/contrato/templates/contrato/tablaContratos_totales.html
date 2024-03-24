@@ -1,0 +1,193 @@
+
+
+
+<html>
+    {% extends "proyectoWebApp/padre.html" %}
+{% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>MODIFICAR CONTRATO</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+       <!-- <link href="css/styles.css" rel="stylesheet" /> -->
+         <link href="{% static 'proyectoWebApp/css/styles_admin.css' %}" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body class="sb-nav-fixed">
+
+       
+    <!-- Modal --> <!-- volver atras ---------- -->
+    
+   
+   
+            
+           
+             
+       
+      
+        
+       
+     
+<!--fin del modal-->
+{% block content %}
+      {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+<main>
+   
+    <h2 style="margin:center; text-align:center; font-family: arial; background: #37517e; color:white;">Tabla Contratos totales</h2>
+    <div class="container-fluid px-4">
+      
+      <!--  <a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px; " href="#"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar a CONTRATO</a><br>
+        <a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px;" href="#"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar al HOME</a><br>
+        <a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px;" href="#"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; ir al PANEL</a>-->
+        <!-- #37517e; color anterior -->
+<br>
+<br>
+                            <div class="card-body">
+                                <table  id="table_ejemploList" class="table table-striped table-bordered">
+                                    <thead style="background:#F5B7B1; color:black;">
+                                        <tr>
+
+                                            <th><div style="width:180px;">Habitacion</div></th>
+                                            <th><div style="width:180px;">Huesped</div></th>
+                                            <th><div style="width:180px;">Fecha entrada</div></th>
+                                            <th><div style="width:180px;">Fecha salida</div></th>
+                                         
+                                            <th>Importe estadia</th>
+                                            <th>Importe otros gastos</th>
+                                            <th>Descuento habitacion noche</th>
+                                         
+                                            <th>Descuento al total</th>
+                                            <th>Aumento al total</th>
+                                           <!-- <th>Late check out</th> -->
+                                           <th>Porcentaje de la seña</th>
+
+                                         <!-- <th>Total</th>-->
+                                            <th><div style= "width:120px;">Total a cobrar</div></th>
+                                            <th>Total productos consumidos</th>
+                                            <th>Administrador</th>
+                                           
+                                          <!--  <th>ELIMINAR / EDITAR / LATE CHECK OUT</th> -->
+                                           <!--  <th>ELIMINAR</th> -->
+
+                                        </tr>
+                                    </thead>
+                              <!--      <tfoot>
+                                       &lt;!&ndash; <tr>
+                                            <th>Nombre o numero</th>
+                                            <th>Capacidad</th>
+                                            <th>Camita bebe</th>
+                                            <th>Esta limpia</th>
+                                            <th>Posee heladera date</th>
+                                            <th>Posee aire acondicionado</th>
+                                            <th>Posee calefaccion</th>
+                                            <th>Posee ventana</th>
+                                            <th>Posee cama matrimonial</th>
+                                            <th>Posee televisor</th>
+                                            <th>Posee wifi</th>
+                                        </tr>&ndash;&gt;
+                                    </tfoot>-->
+                                    <tbody>
+                                    {%  for contrato in contratos %}
+                                    <tr>
+
+                                        <td>{{contrato.habitacion}}</td>
+                                        <td>{{contrato.huesped}}</td>
+                                    
+                                        <td>{{contrato.fecha_entrada}}</td>
+                                        <td>{{contrato.fecha_salida}}</td>
+                                        <td>{{contrato.importe_estadia}}</td>
+                                        <td>{{contrato.importe_otros_gasto}}</td>
+                                       <!-- <td>{{contrato.late_chack_out}}</td> -->
+                                       <td>{{contrato.descuento_importe_noche}}</td>
+                                        <td>{{contrato.descuento_total_calcularo}}</td>
+                                        <td>{{contrato.aumento_total}}</td>
+                                        <td>{{contrato.porcentaje_de_senia_reservas}}</td>
+
+                                        <td><div style="background:green; color:white;">{{contrato.total}} </div></td>
+
+                                        <!--<td>{{contrato.total}}</td>-->
+                                        <td>{{contrato.total_consumidos}}</td>
+                                        <td>{{contrato.user}}</td>
+                                      
+                                       
+                                      <!-- <div style="display:flex;"> 
+                                       
+                                      
+                                   <td>   
+                                            <div style="display:flex;"> 
+                                      
+                                       < <a href="{% url 'eliminarContrato' contrato.id %}"> <button type="button" style="background:#D6234A; color:white; border:none;">eliminar</button></a> &nbsp;
+                                        <a href="{% url 'modificarTablaContrato' contrato.id %}"> <button type="button" style="background: #37517e; color:white; border:none;">editar</button></a>&nbsp;
+                                        <a href="{% url 'late_check' contrato.id %}"> <button type="button" style="background: #37517e; color:white; border:none;">late check out</button></a>&nbsp;
+                               
+                                  </div> 
+                                    </td> -->
+                                       
+                                      <!-- <td> <a href="#"> <button type="button" style="background:blue; color:white;">modificar</button></a></td>
+                                        <td><a href="#"> <button type="button" style="background:red; color:white;">eliminar</button></a> -->
+                                       
+                                       
+
+
+                                    </tr>
+                                   
+      
+    
+
+                                         {% endfor %}
+
+                                    </tbody>
+                                </table>
+               <!--     </div>      este div me aparecia con error -->
+
+               {% endblock %}
+        </main>
+
+       
+<br>
+
+
+
+
+               <!-- <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>-->
+              
+            </div>
+        </div>
+
+      
+
+
+     
+       <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'proyectoWebApp/js_admin/scripts.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{%  static 'proyectoWebApp/js_admin/datatables-simple-demo.js' %}"></script>-->
+       
+    </body>
+</html>
+

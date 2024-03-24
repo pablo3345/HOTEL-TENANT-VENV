@@ -1,0 +1,42 @@
+
+<html>
+    {% load static %}
+
+
+  
+            <div class="modal fade"  id="id_cambiarToTal{{contrato.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar Total</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>¿Desea cambiar el total al huesped? {{contrato.huesped}} y a la habitación {{contrato.habitacion.nombre_numero}}</p>
+                    <p> Total Anterior: {{contrato.total}}</p>
+                    </div><br>
+                  
+                   </a>
+                    <div class="modal-footer">
+                    
+                      <form action="{% url 'cambiarTotal' contrato.id %}" method="POST">
+                        {% csrf_token %}
+                        <input name="cambiar_total"   class="form-control" style=" margin-right:25px;"><br>
+                        <div style="display:flex;">
+                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>&nbsp;&nbsp;
+                       <!-- <button type="submit" class="btn btn-danger">Eliminar</button> --> 
+                       <button type="submit" class="btn btn-info">Cambiar</button>
+                        </div>
+                      </form>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+  
+        <!--volver atras---- ------------------------------    ------------  -----------   --->
+
+  </html>

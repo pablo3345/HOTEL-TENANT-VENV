@@ -1,0 +1,178 @@
+
+<html>
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!--volver atras------------------------ ------------------ ------------------- ---- ---->
+  <title>HOTEL ADMINISTRACIÓN</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'proyectoWebApp/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'proyectoWebApp/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'proyectoWebApp/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'proyectoWebApp/assets/css/style.css' %}" rel="stylesheet">
+
+ <!-- <link href="{% static 'proyectoWebApp/assets/css/style_anterior.css' %}" rel="stylesheet">-->
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.11.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+<!--volver atras-------------------------------------------------------------------------------------------- -->
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background:#0D75A3;">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="{% url 'Inicio' %}">SYCOD</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+     
+      
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+
+
+
+
+      {% if user.is_authenticated %}
+       <nav id="navbar" class="navbar" style="color:white;">
+       
+        <ul>
+      <li> <a  href="{% url 'Cerrar_sesion' %}"  style="font-size:17px; text-decoration:none;"class="nav-link scrollto ">Cerrar Sesión</a></li>
+        </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+         {% else %} <!-- si no esta logeado, me aparece lo de abajo  -->
+         
+       </nav>
+         <nav id="navbar" class="navbar">
+          <ul>
+      <li> <a {% if request.path == '/Inicio/' %}class="nav-link scrollto"{% endif %} href="{% url 'Logear' %}"  style="font-size:18px"> <img src="{% static 'proyectoWebApp/img/login_retocado.png' %}" class="img-fluid animated" alt="">&nbsp; Ingresar </a></li> &nbsp; &nbsp;
+       
+      
+       <li>  <a {% if request.path == '/Inicio/' %}class="nav-link scrollto"{% endif %} href="{% url 'Registrarse' %}"  style="font-size:18px"> <img src="{% static 'proyectoWebApp/img/registro.png' %}" class="img-fluid animated" alt="">&nbsp; Registrarse </a></li>
+          </ul>
+         <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+         {% endif%}
+
+     <!-- <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="#">Ingresar</a></li>
+          <li><a class="nav-link scrollto" href="#">Registrarse</a></li>
+        </ul>-->
+          <!--<li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>-->
+       
+      
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center" style="height: 33vh;">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <!--<h1>Better Solutions For Your Business</h1>-->
+         <!-- <h2>We are team of talented designers making websites with Bootstrap</h2>-->
+         <!-- <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+          </div>-->
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+         <!-- <img src="{% static 'proyectoWebApp/img/hotel.png' %}" class="img-fluid animated" alt="">-->
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+<br>
+<br>
+  <main id="main">
+   <!-- <a  href="#"  style="font-size:13px; margin-left:28px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="" class="img-fluid">&nbsp; regresar al SITIO WEB</a><br><br>-->
+
+    <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} ya entro al sistema!<br></p>
+   <p  style="font-size:20px; margin-left:30px; margin-right:20px; font-weight:bold;"> La direccion que se muestra a continuacion la debe usar para entrar al sitio web (guardela), se coloca en la parte de arriba de la pantalla donde van las direcciones url, ahora desde esta página o la del sitio en (acceso a usuarios), debe registrar un usuario y una contraseña, debe guardarlas para ingresar y para manipular el sistema hotelero, se pueden registrar todos los usuarios que van a uasar el software.<br>
+   A continuación le enviaremos un mail con esta direccion para que ya la tenga, revise la bandeja de entrada o spam.</p>
+   <h3 style="color:green; margin-left:30px;"> {{variable_inicio}}:8000</h3>
+   <!-- {% if user.is_authenticated %}
+     
+       <h4 style="margin-left: 80px;"> Hola {{user.username}}...</h4><br>
+{% endif %}
+    <h5 style="margin-left:80px;">Lista de administradores registrados</h5>
+    <div  class="form-group" style="margin-top:10px; margin-left:80px;">   
+   
+        <select style="width:25%;" class="form-control">
+          {% for usu in usuarios%}
+         <option>{{usu.username}}</option>
+         {% endfor %}
+        </select>
+      </div>-->
+    <!-- ======= Clients Section ======= -->
+   <!-- <section id="clients" class="clients section-bg">-->
+      
+ 
+ <br>
+ <br>
+    </main>
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'proyectoWebApp/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/waypoints/noframework.waypoints.js'%}"></script>
+  <script src="{% static 'proyectoWebApp/assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'proyectoWebApp/assets/js/main.js'%}"></script>
+
+</body>
+
+</html>

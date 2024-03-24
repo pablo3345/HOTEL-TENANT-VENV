@@ -1,0 +1,152 @@
+<html>
+  {% extends "proyectoWebApp/padre.html" %}
+ {% load static %}
+<head>
+
+    <!-- <link href="{% static 'proyectoWebApp/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'proyectoWebApp/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'proyectoWebApp/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'proyectoWebApp/css/ContenedorFormulario.css' %}" rel="stylesheet">-->
+
+
+
+
+
+
+</head>
+<body>
+
+  {% block content %}
+  {% load crispy_forms_tags %}
+  
+
+
+
+  
+
+
+
+ <div>
+
+
+
+     
+
+  <h2 style="margin:center; text-align:center; font-family: arial; background:   #37517e; color:white; ">Editar Contrato</h2><br>
+ <!-- <a  href="#"  style="font-size:23px; margin-left:1065px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar a la Tabla</a>-->
+
+  <form method ="post" class="ContenedorFormulario" style="margin:auto;">
+   {% csrf_token %}
+   
+   
+      <br>
+      <div>
+
+        <h5 style="color:green;">Para cambiar de habitacion elimine este contrato o bien habilite desde el Panel de Administracion dicha habitacion, si es que esta ocupada, y cargue un nuevo a Contrato en <a href= {% url 'Contrato' %}>Contrato</a><h5><br>
+  <div>
+    <h5>Habitacion: {{habitacion_para_form}}<h5><br>
+  </div>
+   <div>
+ <h6>El último de la lista de huesped de abajo, es el que guardó recientemente.</h6> 
+      <h5> {{formContrato.huesped|as_crispy_field}}<h5><br>
+        </div>
+        <div>
+      <h5>{{formContrato.fecha_entrada|as_crispy_field}}<h5><br>
+      </div>
+      <h5> {{formContrato.fecha_salida|as_crispy_field}}<h5><br>
+        <div>
+      <h5> {{formContrato.importe_otros_gasto|as_crispy_field}}<h5>
+      </div>
+      <div>
+        <h5> {{formContrato.descuento_importe_noche|as_crispy_field}}<h5>
+        </div>
+        <div>
+          <h5> {{formContrato.descuento_total_calcularo|as_crispy_field}}<h5>
+          </div>
+          <div>
+            <h5> {{formContrato.aumento_total|as_crispy_field}}<h5>
+            </div>
+
+            <div hidden>
+             <h4> {{formContrato.porcentaje_de_senia_reservas|as_crispy_field}}</h4>
+              </div>
+      
+    
+              
+<br>
+ <ul style="color:green">
+  
+   
+    <!--  <li>  <h5 style="font-weight:bold;">Entrada: {{contrato.fecha_entrada}}</h5></li>
+        <li>  <h5 style="font-weight:bold;">Salida: {{contrato.fecha_salida}}</h5></li> -->
+    
+         <!-- <li>  <h5 style="font-weight:bold;">Importe estadia: {{contrato.importe_estadia}}</h5></li>--> 
+ 
+<br>
+
+
+
+
+</ul> 
+
+
+
+
+
+
+  <input type="submit" value="ACTUALIZAR" class="btn btn-info"><br><br>
+
+
+<a href= "{% url 'modificarContrato' %}"  style="margin:auto"><button type="button" class="btn btn-info">CANCELAR</button></a>
+<br>
+
+
+
+
+  </form>
+
+
+
+<br>
+<br>
+
+
+ </div>
+
+</main>
+
+
+<!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+ <!-- <script src="{% static 'proyectoWebApp/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/isotope-layout/isotope.pkgd.min.js '%}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'proyectoWebApp/vendor/php-email-form/validate.js' %}"></script>
+
+   Template Main JS File 
+  <script src="{% static 'proyectoWebApp/js/main.js' %}"></script>-->
+
+
+{% endblock %}
+
+</body>
+
+
+
+
+
+</html>

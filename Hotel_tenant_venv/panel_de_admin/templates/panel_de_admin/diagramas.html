@@ -1,0 +1,47 @@
+
+
+
+<!--del video Chart.js Tutorial [En español con codigo de ejemplo]   agregue en el options, scales: xq los que tenian valor uno no me mostraba la barra -->
+   
+
+   
+   
+<div style="margin:40px; 40px;">
+      
+  <canvas id="myChart" style="width:100%;max-width:930px;"></canvas>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> 
+ 
+<script>
+const xValues = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const yValues = [{{data.mesEnero}}, {{data.mesFebrero}}, {{data.mesMarzo}}, {{data.mesAbril}}, {{data.mesMayo}}, {{data.mesJunio}}, {{data.mesJulio}}, {{data.mesAgosto}}, {{data.mesSeptiembre}}, {{data.mesOctubre}}, {{data.mesNoviembre}}, {{data.mesDiciembre}}];
+const barColors = ["#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb","#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb"];
+
+new Chart("myChart", {
+type: "bar",
+  data: {
+   labels: xValues,
+     datasets: [{
+      backgroundColor: barColors,
+               data: yValues
+                  }]
+                      },
+                     options: {
+               legend: {display: false},
+                           title: {
+                       display: true,
+                     text: "CANTIDAD DE INGRESOS DEL AÑO ACTUAL POR CADA MES"
+                             },
+
+                            scales:{yAxes:[{
+                               ticks:{beginAtZero:true} }]
+                              }
+
+                           }
+                               });
+                                </script>
+
+                          
+
+                              </div>
+                           

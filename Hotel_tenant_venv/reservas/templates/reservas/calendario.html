@@ -1,0 +1,63 @@
+<html>
+  
+{% extends "proyectoWebApp/padre_calendario.html" %}
+    {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+   
+    <title>Calendario</title>
+  </head>
+ 
+  <body>
+   {% block content %}
+  <br>
+  <!-- <a href= "{% url 'ModificarReservas' %}"  style="margin-left:500px;"><button type="button" class="btn btn-info">SALIR DEL CALENDARIO E IR A OTR PAGINA</button></a>-->
+  <div class="content">
+  
+    <!-- <a style="margin-left:500; font-weight:bold; text-decoration:none;font-size:20px; " href="{% url 'ModificarReservas' %}"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar a RESERVAS</a><br> -->
+    <div id='calendar'></div>
+  </div>
+    
+    
+
+   
+   <!-- <script src="{% static 'proyectoWebApp/fullcalendar_calendario/packages/core/locales/es.js' %}"></script>-->
+    <script>
+         // $('#calendar').fullCalendar({locale:'es',
+    document.addEventListener('DOMContentLoaded', function() {
+    let hoy =Date.now(); //agregue esto para poner la fecha actual
+  
+  
+
+    // -------volver atras-------------------------------- -------- ------
+    var calendarEl = document.getElementById('calendar');
+  
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+     
+    
+      plugins: [ 'interaction', 'dayGrid' ],
+      defaultDate: hoy, //fecha actual
+      editable: true,
+      locales:'es',//agregue esto para cambiar el idioma del calendario
+      eventLimit: true, // allow "more" link when too many events
+      events:    {{datos_calendario|safe }},  
+      
+     
+     
+     
+      
+      
+       
+      
+    });
+  
+    calendar.render();
+  });
+
+    </script>
+
+   
+{%endblock%}
+  </body>
+</html>

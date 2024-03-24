@@ -1,0 +1,108 @@
+<html>
+    <head>
+{% extends "proyectoWebApp/padre.html" %}
+{% load static %}
+
+    </head>
+
+
+<body>
+
+{% block content %}
+<h2 class="text-center" style="background: #F39C12; color:white; font-family: arial; color:white;">Panel de Administración</h2>
+
+
+
+
+
+
+
+<a href="{% url 'Panel' %}"  style="font-size:15px; margin-left:35px; text-decoration:none; font-weight:bold;"><img src="{% static 'proyectoWebApp/img/actualizar.png' %}" style="width: 3em; height: 3em; padding:5px;" class="img-fluid"> Actualizar estado </a><br>
+
+<a href="{% url 'colocar_diagrama' %}"  style="font-size:15px; margin-left:35px; text-decoration:none; font-weight:bold;"><img src="{% static 'proyectoWebApp/img/grafico.png' %}" style="width: 3em; height: 3em; padding:5px;" class="img-fluid">Gráfico de barras</a><br><br>
+
+<img src="{% static 'proyectoWebApp/img/habitaciones.png' %}" style="margin-left:35px;" class="img-fluid"><br><br>
+<!--<div  style="display:flex; font-size:20px; margin-left:40px;"><h7 style="color:green; font-weight:bold;">libres </h7> &nbsp;  <h7 style="color:blue;  font-weight:bold;">ocupadas </h7> &nbsp;  <h7 style="color:red;  font-weight:bold;"> despúes </h7></div>-->
+
+
+<div class="container-fluid px-4">
+ 
+   <!--col -md-6  estaba-->
+    <div class="container">
+    <div class="row">
+        {% for habitacion in habitacion %}
+        <div class="col-xl-2 col-md-3 col-lg-3 col-sm-4">
+            <div class="card bg-success text-white mb-4"  style="width: 62%; margin: 9px 9px;font-size:15px;">
+                <div class="card-body" style="text-align:center;">{{habitacion.nombre_numero}}</div>
+                <!--<div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#" style="text-decoration:none;">HABILITAR</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>-->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        {% for habiOcup in habitacionesOcupadas %}
+        <div class="col-xl-2 col-md-3 col-lg-3 col-sm-4">
+            <div class="card bg-primary text-white mb-4"  style="width: 62%; margin: 9px 9px;font-size:15px;">
+                <div class="card-body" style="text-align:center;">{{habiOcup.habitacion.nombre_numero}}</div>
+                <h7 style="text-align:center;">{{habiOcup.huesped.apellido}}</h7>
+                <h7 style="text-align:center;">{{habiOcup.fecha_salida| date:"d-m-Y"}}</h7>
+                <h7 style="text-align:center;">{{habiOcup.fecha_salida| time }}</h7>
+               <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                  <a class="small text-white stretched-link" href="#" style="text-decoration:none;">HABILITAR</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>-->
+             
+                <a data-bs-toggle="modal" data-bs-target="#habilitar_ocupadas{{habiOcup.habitacion.id}}" class="btn btn-primary" style="font-size:12px;">HABILITAR</a>  <!-- adonde nos lleva el vinculo en el futuro !-->
+            
+            </div>
+         
+            {% include 'modal/modal_habitaciones_ocupadas.html' %}
+         
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for habiOcu  in habitaciones_post %}
+        <div class="col-xl-2 col-md-3 col-lg-3  col-sm-4">
+            <div class="card bg-danger text-white mb-4"  style="width: 62%; margin: 9px 9px;font-size:15px;">
+                <!--<div class="card-body">{{contrato.habitacion.nombre_numero}}</div>-->
+               <!-- <p style="text-align:center;">{{contrato.huesped.apellido}}</p>
+                <p style="text-align:center;">{{contrato.fecha_salida}}</p>-->
+                <div class="card-body" style="text-align:center;">{{habiOcu.habitacion.nombre_numero}}</div>
+                <h7 style="text-align:center;">NO ESTA LISTA</h7>
+               <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#" style="text-decoration:none;">HABILITAR</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+
+                   
+              
+                <a data-bs-toggle="modal" data-bs-target="#habilitarPost_time{{habiOcu.habitacion.id}}" class="btn btn-danger" style="font-size:12px;">HABILITAR</a>  <!-- adonde nos lleva el vinculo en el futuro !-->
+              
+  </div>
+  {% include 'modal/modal_habilitar_habitaciones_postTime.html' %}    
+           
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>                  
+{%  endblock %}
+
+</body>
+
+
+
+</html>

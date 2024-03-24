@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+#---volver atras----------------------------------------------------------------------------------------
+from django.contrib.messages import constants as mensaje_de_error
+
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,12 +30,32 @@ SECRET_KEY = 'django-insecure-a=2x#(7%2sn##u02p(=2r^62(3km@sd!(i=7*nrue(ixzv1fgz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
-INSTALLED_APPS = [
+SHARED_APPS = [ # va a ser compartida x todos los clientes
+    'shared', 
+   
+    'proyectoWebApp',
+    'contacto',       
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+TENANT_APPS = [# va a pertencer a un solo cliente x eso esta la app store
+    'autenticacion',
+    'contrato',
+    'habitacion',
+    'panel_de_admin', 
+  
+    'productos',
+   
+    'reservas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,8 +64,30 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
+INSTALLED_APPS = [
+    'django_tenants',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'crispy_bootstrap5', #para el formulario crispy de bootstra5
+    'crispy_forms',
+    'shared',
+    'autenticacion',
+    'contrato',
+    'habitacion',
+    'panel_de_admin',
+    'productos',
+    'proyectoWebApp',
+    'reservas', 
+    'contacto'
+]
+
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,11 +122,22 @@ WSGI_APPLICATION = 'Hotel_tenant_venv.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django_tenants.postgresql_backend',
+        'NAME': 'hotel_tenant_env2',
+        'USER': 'hotel_tenant_env',
+        'PASSWORD': 'hoteltenantenv8',
+        'HOST': 'localhost',
+        'PORT': 5432,
+        'CHARSET': 'UTF8'
+       # 'DATEBASE_PORT': '55647',
+
     }
+
 }
 
+DATABASE_ROUTERS = (
+    'django_tenants.routers.TenantSyncRouter',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -103,23 +161,54 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-eu'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
 
+USE_TZ = False
+#USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
 
+TENANT_MODEL = "shared.Client" # app.Model
+
+TENANT_DOMAIN_MODEL = "shared.Domain"  # app.Model
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# PARA PROBAR EN GITHUB
+CRISPY_TEMPLATE_PACK= 'bootstrap5' # es para decirle que cargue este paquete crispy en boostrap5
+
+MESSAGE_TAGS = { # TAGS viene de etiqueta "debug" nombro la etiqueta, abajo escribi todas las etiquetas x si mas adelante las voy a usar
+
+mensaje_de_error.DEBUG: 'alert-dark',
+mensaje_de_error.INFO: 'alert-info',
+mensaje_de_error.SUCCESS: 'alert-success',
+mensaje_de_error.WARNING: 'alert-warning',
+mensaje_de_error.ERROR:'alert-danger',
+
+
+}
+#LOGIN_URL ='http://127.0.0.1:8000/autenticacion/logear' #esto lo agregamos para proteger las vistas si no estas logeado, y cuando ponemos login_riquerid en la url, no redireccione al login
+LOGIN_URL= reverse_lazy('Logear') # para que me redireccione al login cuando pongo login_required en las urls, para proteger las vistas si no estas logeado
+
+# configuracion de correo electronico
+
+EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend" # vamos a enviar los correos electronicos usando smtp
+EMAIL_HOST= "smtp.gmail.com" # el host de gmail
+EMAIL_USE_TLS= True # protocolo de seguridad que se usan en el servidor de correo para enviar los correos, hay dos el TLS Y SSL
+# dependiendo de cual utilice para usar un puerto u otro
+EMAIL_PORT = 587 #el puerto que se va a utilizar para enviar los correos electronicos, en el caso de usar TLS con gmail es 587
+EMAIL_HOST_USER="sycod.hotel" #usuario
+#EMAIL_HOST_PASSWORD = "zbxd vmxv ykeg joid" #contraseña anterior de aplicaciones 
+
+EMAIL_HOST_PASSWORD="uhkm murl wnew whoa"

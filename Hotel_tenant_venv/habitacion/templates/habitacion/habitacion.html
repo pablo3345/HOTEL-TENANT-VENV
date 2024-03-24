@@ -1,0 +1,137 @@
+
+
+
+<html>
+
+<head>
+
+    {% extends "proyectoWebApp/padre.html" %}
+    {% load static %}
+   
+ 
+  
+
+
+</head>
+<body>
+ 
+    {% load crispy_forms_tags %}
+
+  
+
+ {% block content %}
+  
+
+
+
+
+ <div>
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+     <!-- <a  href="#"  style="font-size:20px; margin-left:1018px; font-weight:bold;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="">&nbsp; regresar al HOME</a>-->
+
+     <h2 style="text-align:center; font-family: arial; background:#37517e; color:white; ">Cargar las habitaciónes del hotel</h2><br>
+     
+<div>
+   
+  <form method ="post" class="ContenedorFormulario" style="margin:auto;" id="miFormulario15">
+    <br>
+  
+   {% csrf_token %}
+      <br>
+    
+
+  
+
+<table>
+
+    {{forms|crispy}}
+  
+  
+ 
+</table>
+
+
+
+
+
+     
+      <!-- <button type="submit" style="width:200px; margin-left: 400px; margin-top:50px; background:#37517e; color:white; cursor:pointer; ">Guardar</button><br>-->
+      <p style="color:red; margin-left:10px; font-weight:bold; font-size:14px;">* campos obligatorios</p>
+
+
+
+<br>
+  
+
+             <input type="submit"  value="GUARDAR" class="btn btn-info" style="margin-left:20px;" id="guardar-btn2"> <br><br>
+           
+
+          
+           
+             <a href=  "{% url  'modificarHabitacion' %}" ><button type="button" class="btn btn-info" style="margin-left:20px;">TABLA</button></a><br><br>
+             <p style = "font-size: 13px; margin-left:20px;">EN LA TABLA PUEDE ACTUALIZAR Y ELIMINAR</p> <br><br>
+            <br>
+  </form>
+
+
+<br>
+  
+     
+    
+ 
+
+
+
+
+</div>
+
+
+
+<br>
+
+<!--<script>
+  const btn = document.getElementById('guardar-btn2');
+  const form9 = document.querySelector('form');
+
+  form9.addEventListener('submit', () => {
+    btn.disabled = true;
+    alert("habitacion");
+  });
+</script>-->
+<script>
+  var botonA = document.getElementById("guardar-btn2");
+
+  document.getElementById("miFormulario15").addEventListener("submit", function() {
+    botonA.disabled = true;
+   // alert("habitacion");
+  });
+</script>
+
+
+
+{% endblock %}
+
+</body>
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+

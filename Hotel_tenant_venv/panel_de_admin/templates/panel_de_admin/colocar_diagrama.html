@@ -1,0 +1,28 @@
+<html>
+<head>
+    {% extends "proyectoWebApp/padre.html" %}
+    {% load static %}
+    
+   
+   
+
+</head>
+
+<body>
+    {% block content%}
+  
+    <p style=" background:grey; text-align:center; color:white; font-size:20px;">Ingresos del año anterior {{data.anteultimo}} total {{data.total_anioAnterior}}<br>
+   Ingresos del año actual {{data.ultimo}} total {{data.total_anioActual}}</p>
+     
+       {% include "panel_de_admin/diagramas.html" %} <!-- con esto me importa el widget !-->
+     
+    <br><br>
+
+   
+   
+{%endblock %}
+
+</body>
+
+
+</html>
