@@ -3,6 +3,11 @@ from django_tenants.models import TenantMixin, DomainMixin
 
 from django.http import HttpResponse
 
+#-----volver atras----------------------
+
+
+
+
 
 
 
@@ -24,6 +29,9 @@ class Client(TenantMixin): #hereda de TenantMixin, esta clase Cliente puede tene
     created_on = models.DateField(auto_now_add=True) # me captura el momento del registro en la bbdd
     
     cantidad_habitacion= models.CharField(max_length=50)
+    
+    
+    clave = models.CharField(max_length=12, unique=True)
                                         
 
     auto_create_schema = True  #esto es cada ves que creo un cliente me vas a guardar un esquema en la bbdd
@@ -33,7 +41,12 @@ class Client(TenantMixin): #hereda de TenantMixin, esta clase Cliente puede tene
     def __str__(self):
         return f'{self.name}  {self.first_name} {self.last_name} {self.dni}'
     
+    #---------------las dos funciones de abajo son para convertir a minusculas el campo clave------------
     
+    def save(self, *args, **kwargs):
+        if self.clave:
+            self.clave = self.clave.lower()
+        super().save(*args, **kwargs)
    
         
     

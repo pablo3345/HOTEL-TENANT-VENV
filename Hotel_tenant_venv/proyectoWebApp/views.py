@@ -71,7 +71,7 @@ def paginaPrincipal(request):
     
    
     
-   
+    totalClientes = Client.objects.all()
     
     cliente=Client()
     
@@ -80,7 +80,7 @@ def paginaPrincipal(request):
     domain=Domain()
     
    
-   
+    
     
     usuarios = User.objects.all()
     
@@ -102,13 +102,24 @@ def paginaPrincipal(request):
          business_name= request.POST.get("business_name")
          cant_habi=request.POST.get("cant_habi")
          
+         clave=request.POST.get("clave")
          
          
-     
+         
+     #volver atras----------------------------------------------------------
          
          if email != email2:
               messages.error(request, "Los correo electronicos no coinciden, vuelva a cargar el formulario...")
               return redirect("paginaPrincipal")
+          
+         elif len(clave) >12:
+                messages.error(request, "La clave es demasiada larga, intentelo nuevamente...")
+                return redirect("paginaPrincipal")
+             
+         for cli in totalClientes:
+             if clave== cli.clave:
+                messages.error(request, "Esta clave es igual a otra, vuelva a intentarlo nuevamente...")
+                return redirect("paginaPrincipal")
               
            
             
@@ -123,21 +134,29 @@ def paginaPrincipal(request):
          cliente.cantidad_habitacion=cant_habi
          cliente.phone_number=numero_telefono
          
-         #--volver atras-------------------------------------------------------------------- --------------- 
+         cliente.clave=clave
+         
+        
          cliente.schema_name= cliente.last_name +"-dni-"+ cliente.dni
          
          cliente.name=cliente.last_name +"-dni-"+ cliente.dni
          
          cliente.is_active=True
          #--------------domain-----------------------------
+         
+         #------esto lo hago para obtener los ultimos 1 numeros del dni---------------
+         
+         ultimos_uno = cliente.dni[-1:]
+         
+         
          domain.is_primary=True
          domain.tenant=cliente
-         domain.domain=cliente.dni+"."+"localhost"
+         domain.domain=clave.lower()+"-"+ultimos_uno+"."+"localhost" # con lower() convierto a minusculas
          
         
-         variable=cliente.dni
+        # variable=cliente.dni
       
-        # variable
+         variable=clave+"-"+ultimos_uno
     
          
   
