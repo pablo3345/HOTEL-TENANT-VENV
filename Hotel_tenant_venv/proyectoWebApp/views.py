@@ -137,11 +137,15 @@ def paginaPrincipal(request):
          cliente.clave=clave
          
         
-         cliente.schema_name= cliente.last_name +"-dni-"+ cliente.dni
+        # cliente.schema_name= cliente.last_name +"-dni-"+ cliente.dni
+         cliente.schema_name= cliente.last_name +"-"+ cliente.clave.lower()
          
          cliente.name=cliente.last_name +"-dni-"+ cliente.dni
          
          cliente.is_active=True
+         
+         
+         #-------------volver atras----------------------------------------------------------
          #--------------domain-----------------------------
          
          #------esto lo hago para obtener los ultimos 1 numeros del dni---------------
@@ -179,17 +183,17 @@ def paginaPrincipal(request):
        
           dynamic_url = f"http://{variable}.localhost:8000/inicio"
           return redirect(dynamic_url)
+      
+        
         
     
              
          except:
-             pass
+              messages.error(request, "Surgió un error...")
+         
+        
        
-         # messages.error(request, "El cliente no se guardo")
-         
-         #inicio(request, variable_inicio)
-         
-         
+       
       
          
         
