@@ -7,7 +7,7 @@ from shared.models import Client,  Domain
 
 @admin.register(Client)
 class ClientAdmin(TenantAdminMixin, admin.ModelAdmin):
-        list_display = ('id', 'name', 'schema_name', 'last_name', 'first_name','business_name', 'dni', 'cantidad_habitacion', 'email', 'is_active' )
+        list_display = ('id', 'name', 'schema_name', 'last_name', 'first_name','business_name', 'dni', 'cantidad_habitacion', 'email', 'clave','is_active' )
 
 
 
