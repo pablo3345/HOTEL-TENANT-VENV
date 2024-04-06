@@ -133,7 +133,7 @@ def mostrarPanel(request):
     
     
    
-    #volver atras---------------------------------------------------------------------------
+    
     for habi in habitacion:
       if habi.estado =="Null" and habi.eliminado==False: # agregue eliminado==False porque en el panel me aparecian las habitaciones eliminadas (26/11/23, 20:34 hs.)
           habitacionesLibres.append(habi)
@@ -316,11 +316,12 @@ def mostrarPanel(request):
          
          
       
+       
         
-         
+     
    
     
-    return render(request, "panel_de_admin/index.html", {'data':data,'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
+    return render(request, "panel_de_admin/index.html", {'data':data, 'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
  'habitaciones_post':habitaciones_post, 'habitacionesOcupadas': habitacionesOcupadas})
 
 
@@ -734,11 +735,14 @@ def colocar_diagrama(request):
          
          
       
-        
+       data_anterior={"eneroAnterior":cantidadEneroAnterior, "febreroAnterior":cantidadFebreroAnterior, "marzoAnterior":cantidadMarzoAnterior, "abrilAnterior":cantidadAbrilAnterior,
+                      "mayoAnterior":cantidadMayoAnterior, "junioAnterior":cantidadJunioAnterior, "julioAnterior":cantidadJulioAnterior, "agostoAnterior":cantidadAgostoAnterior,
+                      "septiembreAnterior":cantidadSeptiembreAnterior, "octubreAnterior":cantidadOctubreAnterior, "noviembreAnterior":cantidadNoviembreAnterior, "diciembreAnterior":cantidadDiciembreAnterior}
+         
          
    
     
-    return render(request, "panel_de_admin/colocar_diagrama.html", {'data':data,'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
+    return render(request, "panel_de_admin/colocar_diagrama.html", {'data':data, 'data_anterior':data_anterior, 'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
  'habitaciones_post':habitaciones_post, 'habitacionesOcupadas': habitacionesOcupadas})
 
 

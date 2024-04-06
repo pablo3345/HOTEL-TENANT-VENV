@@ -2,7 +2,7 @@
 
 
 <!--del video Chart.js Tutorial [En español con codigo de ejemplo]   agregue en el options, scales: xq los que tenian valor uno no me mostraba la barra -->
-   
+   <!---volver atras los colores-->
 
    
    
@@ -13,9 +13,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> 
  
 <script>
-const xValues = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-const yValues = [{{data.mesEnero}}, {{data.mesFebrero}}, {{data.mesMarzo}}, {{data.mesAbril}}, {{data.mesMayo}}, {{data.mesJunio}}, {{data.mesJulio}}, {{data.mesAgosto}}, {{data.mesSeptiembre}}, {{data.mesOctubre}}, {{data.mesNoviembre}}, {{data.mesDiciembre}}];
-const barColors = ["#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb","#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb"];
+const xValues = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
+"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const yValues = [{{data_anterior.eneroAnterior}}, {{data_anterior.febreroAnterior}}, {{data_anterior.marzoAnterior}}, {{data_anterior.abrilAnterior}}, {{data_anterior.mayoAnterior}},
+{{data_anterior.junioAnterior}}, {{data_anterior.julioAnterior}}, {{data_anterior.agostoAnterior}}, {{data_anterior.septiembreAnterior}},
+{{data_anterior.octubreAnterior}}, {{data_anterior.noviembreAnterior}}, {{data_anterior.diciembreAnterior}},{{data.mesEnero}}, {{data.mesFebrero}}, {{data.mesMarzo}}, {{data.mesAbril}}, {{data.mesMayo}}, {{data.mesJunio}}, {{data.mesJulio}}, {{data.mesAgosto}}, {{data.mesSeptiembre}}, {{data.mesOctubre}}, {{data.mesNoviembre}}, {{data.mesDiciembre}}];
+const barColors = ["#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F","#FE039F", "#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb","#7045bb", "#7045bb","#7045bb","#7045bb","#7045bb","#7045bb"];
 
 new Chart("myChart", {
 type: "bar",
@@ -30,7 +33,7 @@ type: "bar",
                legend: {display: false},
                            title: {
                        display: true,
-                     text: "CANTIDAD DE INGRESOS DEL AÑO ACTUAL POR CADA MES"
+                     text: "CANTIDAD DE INGRESOS DEL AÑO ACTUAL Y DEL AÑO ANTERIOR POR CADA MES"
                              },
 
                             scales:{yAxes:[{
