@@ -726,23 +726,23 @@ def colocar_diagrama(request):
        total_anioAnterior= cantidadEneroAnterior +cantidadFebreroAnterior +cantidadMarzoAnterior +cantidadAbrilAnterior +cantidadMayoAnterior +cantidadJunioAnterior +cantidadJulioAnterior + cantidadAgostoAnterior +cantidadSeptiembreAnterior+ cantidadOctubreAnterior + cantidadNoviembreAnterior + cantidadDiciembreAnterior
       
       
-         
+         #---------------------volver atras----------------------------------------------------------
          
        data={"mesEnero": cantidadEnero, "mesFebrero":cantidadFebrero, "mesMarzo":cantidadMarzo, "mesAbril":cantidadAbril,
              "mesMayo": cantidadMayo, "mesJunio": cantidadJunio, "mesJulio": cantidadJulio, "mesAgosto": cantidadAgosto,
              "mesSeptiembre": cantidadSeptiembre, "mesOctubre": cantidadOctubre, "mesNoviembre":cantidadNoviembre,
-             "mesDiciembre": cantidadDiciembre, "total_anioActual": total_anioActual, "total_anioAnterior":total_anioAnterior, "ultimo":ultimo, "anteultimo":anteultimo_anio}
+             "mesDiciembre": cantidadDiciembre, "total_anioActual": total_anioActual, "total_anioAnterior":total_anioAnterior, "ultimo":ultimo, "anteultimo":anteultimo_anio,
          
          
       
-       data_anterior={"eneroAnterior":cantidadEneroAnterior, "febreroAnterior":cantidadFebreroAnterior, "marzoAnterior":cantidadMarzoAnterior, "abrilAnterior":cantidadAbrilAnterior,
+             "eneroAnterior":cantidadEneroAnterior, "febreroAnterior":cantidadFebreroAnterior, "marzoAnterior":cantidadMarzoAnterior, "abrilAnterior":cantidadAbrilAnterior,
                       "mayoAnterior":cantidadMayoAnterior, "junioAnterior":cantidadJunioAnterior, "julioAnterior":cantidadJulioAnterior, "agostoAnterior":cantidadAgostoAnterior,
                       "septiembreAnterior":cantidadSeptiembreAnterior, "octubreAnterior":cantidadOctubreAnterior, "noviembreAnterior":cantidadNoviembreAnterior, "diciembreAnterior":cantidadDiciembreAnterior}
          
          
    
     
-    return render(request, "panel_de_admin/colocar_diagrama.html", {'data':data, 'data_anterior':data_anterior, 'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
+    return render(request, "panel_de_admin/colocar_diagrama.html", {'data':data, 'habitacion': habitacionesLibres, 'contrato': contrato, 'habitacionesNoLimpias': habitacionesNoLimpias,
  'habitaciones_post':habitaciones_post, 'habitacionesOcupadas': habitacionesOcupadas})
 
 
