@@ -106,15 +106,15 @@ def paginaPrincipal(request):
          
          
          
-     #volver atras----------------------------------------------------------
+     
          
          if email != email2:
               messages.error(request, "Los correo electronicos no coinciden, vuelva a cargar el formulario...")
               return redirect("paginaPrincipal")
           
-         elif len(clave) >12:
+         '''elif len(clave) >12:
                 messages.error(request, "La clave es demasiada larga, intentelo nuevamente...")
-                return redirect("paginaPrincipal")
+                return redirect("paginaPrincipal")'''
              
          for cli in totalClientes:
              if clave== cli.clave:
@@ -169,7 +169,7 @@ def paginaPrincipal(request):
              
           cliente.save()
           domain.save()
-        #  messages.success(request, "El cliente se guardo correctamente, le enviamos un mail con su dominio para que lo guarde y entre con al sistema")
+     
         
          
         
@@ -177,13 +177,17 @@ def paginaPrincipal(request):
         
         
         
-         
+         #----volver--atras---------------------------------------------------
                
         
        
-          dynamic_url = f"http://{variable}.localhost:8000/inicio"
-          return redirect(dynamic_url)
-      
+          #dynamic_url = f"http://{variable}.localhost:8000/inicio"
+         # return redirect(dynamic_url)
+         
+          return redirect("Inicio")
+         
+         
+         
         
         
     

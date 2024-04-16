@@ -188,7 +188,7 @@
         <div class="col-lg-6">
 
 
-         <form method="post" onsubmit="convertirAMinusculas()">
+         <form method="post" id="miFormulario100" onsubmit="convertirAMinusculas()">
           {% csrf_token %}
 
 
@@ -214,7 +214,7 @@
           <label for="email"  style="font-weight:bold; color:#37517e;">Email (le enviamos los datos a su correo):</label>
           <div class ="form-group">
          
-            <input type="email" class="form-control" name="email" style="display: inline-block;" required>
+            <input type="email" class="form-control" name="email" id="correo1" style="display: inline-block;" required>
 
 
           </div>
@@ -222,10 +222,12 @@
           <label for="email2"  style="font-weight:bold; color:#37517e;">Repita el email:</label>
           <div class ="form-group">
          
-            <input type="email" class="form-control" name="email2" style="display: inline-block;" required>
+            <input type="email" class="form-control" name="email2" id="correo2" style="display: inline-block;" oninput="compararCorreos()" required>
 
 
           </div>
+          <span id="mensajeError" style="color: red;"></span>
+
 
 
 
@@ -283,7 +285,7 @@
           <label for="clave"  style="font-weight:bold; color:#37517e;">Elija una clave se recomienda de 8 caracteres pueden ser letras o números sin espacios</label>
           <div class ="form-group">
          
-            <input type="text" class="form-control" name="clave" style="display: inline-block; text-transform: lowercase;" required>
+            <input type="text" class="form-control" name="clave" id="mi_input" style="display: inline-block; text-transform: lowercase;" required>
 
 
           </div>
@@ -319,7 +321,7 @@
     </div>
     <br>
     <br>
-    <input type="submit" value="ENVIAR" class="btn btn-primary" style="margin-left:5px; width:170px;" onclick="enviarDatos()">
+    <input type="submit" value="ENVIAR" class="btn btn-primary" id="miBotonPrueba" style="margin-left:5px; width:170px;" onclick="enviarDatos()">
   </form>
 </div>
 
@@ -644,7 +646,7 @@
           <h4 style="color:#37517e; font-weight:bold;">ENVIANOS UN MENSAJE</h4>
         </div>
        <div class="container">
-        <form action="/contacto/" method="POST" style="text-align: center">
+        <form action="/contacto/" method="POST" id="contacto26" style="text-align: center">
           {% csrf_token %} <!-- es una clave de seguridad que permite enviar el formulario a traves del navegador, sino daria error para que otras personas no envien desde este formulario -->
           <label for="nombre2" style="font-weight:bold; color:#37517e; vertical-align:top;">Nombre y apellido:</label>
           <div class ="form-group">
@@ -680,7 +682,7 @@
         
           </div>
           <br>
-          <input type="submit" value="ENVIAR" class="btn btn-primary" style="margin:auto; width:170px;"  onclick="enviarDatos2()">
+          <input type="submit" value="ENVIAR" class="btn btn-primary" style="margin:auto; width:170px;" id="contacto" onclick="enviarDatos2()">
     
         </div>
     </form>
@@ -854,8 +856,56 @@ function enviarDatos(){
     document.getElementById('mobile-number3').value=input2;
   }
   </script>
-  
 
+
+
+  <!--para ver si es mayor a 12 caracteres la clave me salga una advertencia---------------->
+  <script>
+    const inputElement = document.getElementById("mi_input");
+    inputElement.addEventListener("input", function() {
+        if (this.value.length > 12) {
+            this.setCustomValidity("La clave debe tener menos de 12 caracteres");
+        } else {
+            this.setCustomValidity("");
+        }
+    });
+</script>
+  
+<!--------------para si los dos campos de correo no son iguales me salga una advertencia en el input--- -->
+<script>
+  function compararCorreos() {
+      const correo1 = document.getElementById('correo1').value;
+      const correo2 = document.getElementById('correo2').value;
+      const mensajeError = document.getElementById('mensajeError');
+
+      if (correo1 !== correo2) {
+          mensajeError.textContent = 'Los correos no coinciden';
+      } else {
+          mensajeError.textContent = '';
+      }
+  }
+</script>
+
+
+<!-- -----------script contrato desactivar el boton prueba gratuita------------------------- --- -->
+<script>
+   var boton100 = document.getElementById("miBotonPrueba");
+ 
+   document.getElementById("miFormulario100").addEventListener("submit", function() {
+     boton100.disabled = true;
+    // alert("prueba gratuita");
+   });
+ </script>
+<!-------------------desactivar el boton despues de contacto----------- -->
+<script>
+  var boton103 = document.getElementById("contacto");
+
+  document.getElementById("contacto26").addEventListener("submit", function() {
+    boton103.disabled = true;
+    //alert("contactosfg");
+  });
+</script>
+ss
 </body>
 <!--para comprobar en git -->
 </html>

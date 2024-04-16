@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<!--volver atras------------------------ ------------------ ------------------- ---- ---->
+
   <title>HOTEL ADMINISTRACIÓN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -45,6 +45,7 @@
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto"><a href="{% url 'Inicio' %}">SYCOD</a></h1>
+      <a href="{% url 'paginaPrincipal' %}" style="font-size:18px;"> Regresar al sitio</a>
       <!-- Uncomment below if you prefer to use an image logo -->
      
       
@@ -54,7 +55,7 @@
 
 
 
-      {% if user.is_authenticated %}
+    {% comment %}   {% if user.is_authenticated %}
        <nav id="navbar" class="navbar" style="color:white;">
        
         <ul>
@@ -73,7 +74,7 @@
           </ul>
          <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-         {% endif%}
+         {% endif%} {% endcomment %}
 
      <!-- <nav id="navbar" class="navbar">
         <ul>
@@ -109,8 +110,8 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center" style="height: 33vh;">
-
+  <section id="hero" class="d-flex align-items-center" style="height: 5vh;">
+ 
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -133,10 +134,13 @@
   <main id="main">
    <!-- <a  href="#"  style="font-size:13px; margin-left:28px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="" class="img-fluid">&nbsp; regresar al SITIO WEB</a><br><br>-->
 
-    <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} ya entro al sistema!<br></p>
-   <p  style="font-size:20px; margin-left:30px; margin-right:20px; font-weight:bold;"> La dirección que se muestra a continuación la debe usar para entrar al sitio web (guardela), se coloca en la parte de arriba de la pantalla donde van las direcciones url, ahora desde esta página o la del sitio en (acceso a usuarios), debe registrar un usuario y una contraseña, debe guardarlas para ingresar y para manipular el sistema hotelero, se pueden registrar todos los usuarios que van a uasar el software.<br>
+   <!-- <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} ya entro al sistema!<br></p>-->
+     <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} la activasión de su cuenta puede tardar de 2 a 24 horas.<br></p>
+   <p  style="font-size:20px; margin-left:30px; margin-right:20px; font-weight:bold;"> La dirección que se muestra a continuación la debe usar para entrar a su sitio web (guardela), la dirección se coloca en la parte de arriba de la pantalla donde van las direcciones urls, luego una vez que ingreso la dirección y desde la página principal en (acceso a usuarios), debe registrar un usuario y una contraseña, debe guardarlas es para ingresar y manipular el sistema hotelero, se pueden registrar todos los usuarios que van a uasar el software.<br>
    A continuación le enviaremos un mail con esta dirección para que ya la tenga, revise la bandeja de entrada o spam.</p>
-   <h3 style="color:green; margin-left:30px;"> {{variable_inicio}}:8000</h3>
+   <h3 style="color:green; margin-left:30px;"> {{variable_inicio}}:8000</h3><br><br><br>
+
+   <img src="{% static 'proyectoWebApp/img/pasos_uno_dos.png' %}" class="img-fluid" alt="" style="margin-left:250px;">
    <!-- {% if user.is_authenticated %}
      
        <h4 style="margin-left: 80px;"> Hola {{user.username}}...</h4><br>
@@ -175,4 +179,4 @@
 
 </body>
 
-</html>
+</html> 
