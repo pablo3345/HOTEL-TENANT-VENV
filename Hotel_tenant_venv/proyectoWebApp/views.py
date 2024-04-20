@@ -24,7 +24,7 @@ def manual_usuario(request):
     return render(request, "proyectoWebApp/manual_usuario.html")
 
 
-def inicio(request):
+'''def inicio(request):
     
    # variable_inicio= kwargs.get("variable_inicio")
     
@@ -44,7 +44,7 @@ def inicio(request):
   
     
   
-    return render(request, "proyectoWebApp/inicio.html", {'usuarios': usuarios, 'variable_inicio': variable_inicio, 'nombre':nombre})
+    return render(request, "proyectoWebApp/inicio.html", {'usuarios': usuarios, 'variable_inicio': variable_inicio, 'nombre':nombre})'''
 
 
 
@@ -184,7 +184,13 @@ def paginaPrincipal(request):
           #dynamic_url = f"http://{variable}.localhost:8000/inicio"
          # return redirect(dynamic_url)
          
-          return redirect("Inicio")
+         # return redirect("Inicio")
+         
+         
+          messages.success(request, "El formulario se guardó correctamente, revise su correo electronico para obtener la dirección y los pasos a seguir.")
+         
+         
+          return redirect("paginaPrincipal")
          
          
          
@@ -237,6 +243,8 @@ def miError_500(request):
 
 
 def enviar_mail(request):
+    
+    
     
    ultimo_domonio = Domain.objects.last()
    ultimo_cliente = Client.objects.last()

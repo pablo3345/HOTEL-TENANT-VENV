@@ -1,4 +1,4 @@
-
+{% comment %} 
 <html>
 {% load static %}
 <head>
@@ -105,7 +105,7 @@
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>-->
        
       
-
+{% comment %} 
     </div>
   </header><!-- End Header -->
 
@@ -133,16 +133,17 @@
 <br>
   <main id="main">
    <!-- <a  href="#"  style="font-size:13px; margin-left:28px; font-weight:bold; text-decoration:none;"><img src="{% static 'proyectoWebApp/img/logo volver mas chico.png' %}" alt="" class="img-fluid">&nbsp; regresar al SITIO WEB</a><br><br>-->
-
+<!--volver atras--------------------------- -   --->
    <!-- <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} ya entro al sistema!<br></p>-->
-     <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido! {{nombre}} la activasión de su cuenta puede tardar de 2 a 24 horas.<br></p>
-   <p  style="font-size:20px; margin-left:30px; margin-right:20px; font-weight:bold;"> La dirección que se muestra a continuación la debe usar para entrar a su sitio web (guardela), la dirección se coloca en la parte de arriba de la pantalla donde van las direcciones urls, luego una vez que ingreso la dirección y desde la página principal en (acceso a usuarios), debe registrar un usuario y una contraseña, debe guardarlas es para ingresar y manipular el sistema hotelero, se pueden registrar todos los usuarios que van a uasar el software.<br>
-   A continuación le enviaremos un mail con esta dirección para que ya la tenga, revise la bandeja de entrada o spam.</p>
-   <h3 style="color:green; margin-left:30px;"> {{variable_inicio}}:8000</h3><br><br><br>
-
-   <img src="{% static 'proyectoWebApp/img/pasos_uno_dos.png' %}" class="img-fluid" alt="" style="margin-left:250px;">
+     <p style="font-size:22px; margin-left:30px; margin-right:20px; font-weight:bold;">¡Bienvenido/a! la activasión de su cuenta puede tardar de 2 a 24 horas.<br></p>
+   <p  style="font-size:20px; margin-left:30px; margin-right:20px; font-weight:bold;"> La dirección se la enviamos por mail, la debe usar para entrar a su sitio web (guardela), la dirección se coloca en la parte de arriba de la pantalla donde van las direcciones urls, luego una vez que ingreso la dirección y desde la página principal en (acceso a usuarios), debe registrar un usuario y una contraseña, debe guardarlas es para ingresar y manipular el sistema hotelero, se pueden registrar todos los usuarios que van a uasar el software.<br>
+   Revise la bandeja de entrada de su correo o spam.</p>
+   <!--<h3 style="color:green; margin-left:30px;"> {{variable_inicio}}:8000</h3><br><br><br>-->
+<br><br>
+   <img src="{% static 'proyectoWebApp/img/pasos_uno_dos2.png' %}" class="img-fluid" alt="" style="margin-left:250px;">
+   <br>
    <!-- {% if user.is_authenticated %}
-     
+    
        <h4 style="margin-left: 80px;"> Hola {{user.username}}...</h4><br>
 {% endif %}
     <h5 style="margin-left:80px;">Lista de administradores registrados</h5>
@@ -179,4 +180,4 @@
 
 </body>
 
-</html> 
+</html>  {% endcomment %}

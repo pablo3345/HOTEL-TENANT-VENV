@@ -55,24 +55,24 @@
   {% endif %}
     <div class="container d-flex align-items-center">
 
-       <a  href="#hero"> <img src="{% static 'proyectoWebApp/img/logo_color.png' %}" class="img-fluid animated" alt=""></a>
+       <a  href="#hero"> <img src="{% static 'proyectoWebApp/img/logo_color.png' %}" class="img-fluid animated" alt="" style="width:200px; weight:100px;"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+   <!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--> 
+   
+<!--volver atras-----------------------------------------------------------------    ------- --- --- -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a  class="getstarted scrollto" href="#about">INICIAR PRUEBA GRATIS</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Muestras</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Muestras</a></li>
+
+          <li><a class="nav-link scrollto" href="#faq">Preguntas frecuentes</a></li>
          
          <!-- <li><a class="nav-link scrollto" href="#services">Precios</a></li>-->
           <li><a class="nav-link scrollto" href="#team">Precios</a></li>
@@ -211,7 +211,7 @@
 
           </div>
           <br>
-          <label for="email"  style="font-weight:bold; color:#37517e;">Email (le enviamos los datos a su correo):</label>
+          <label for="email"  style="font-weight:bold; color:#37517e;">Email (le enviamos la dirección a su correo):</label>
           <div class ="form-group">
          
             <input type="email" class="form-control" name="email" id="correo1" style="display: inline-block;" required>
@@ -282,10 +282,10 @@
           </div>
           <br>
           <!--------------------------------------------------------------------------- -->
-          <label for="clave"  style="font-weight:bold; color:#37517e;">Elija una clave se recomienda de 8 caracteres pueden ser letras o números sin espacios</label>
+          <label for="clave"  style="font-weight:bold; color:#37517e;">Elija una clave solo de referencia, se recomienda de 8 caracteres pueden ser letras o números sin espacios</label>
           <div class ="form-group">
          
-            <input type="text" class="form-control" name="clave" id="mi_input" style="display: inline-block; text-transform: lowercase;" required>
+            <input type="password" class="form-control" name="clave" id="mi_input" style="display: inline-block; text-transform: lowercase;" required>
 
 
           </div>
@@ -590,10 +590,10 @@
         <div class="faq-list">
           <ul>
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Cómo ingresar una vez de haber llenado el formulario de prueba, haber recogido la dirección que me llegó por email y haber esperado entre 2 y 24 horas que es el tiempo que se activa su cuenta? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                 <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                  <img src="{% static 'proyectoWebApp/img/pasos_uno_dos2.png' %}" class="img-fluid" alt="">
                 </p>
               </div>
             </li>
@@ -689,7 +689,7 @@
       </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-<!--volver atras--------------------------------------------------------------------- -------------------- -->
+
   <!-- ======= Footer ======= -->
  
   <!-- ======= Footer ======= -->
@@ -741,6 +741,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#about">INICIAR PRUEBA GRATUITA</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">Muestras</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#faq">Preguntas frecuentes</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#team">Precios</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contacto</a></li>
             </ul>
