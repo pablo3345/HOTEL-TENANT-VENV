@@ -298,3 +298,8 @@ def is_active_false(request):
 
 
 
+def quienes_somos(request):
+    
+    
+    return render(request, "proyectoWebApp/quienes_somos.html")
+

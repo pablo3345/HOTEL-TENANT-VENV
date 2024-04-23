@@ -19,7 +19,7 @@ urlpatterns = [
      
      path('is_active_false/', views.is_active_false, name="is_active_false"),
     
-    
+      path('quienes_somos/', views.quienes_somos, name="quienes_somos"),
     
      
    
