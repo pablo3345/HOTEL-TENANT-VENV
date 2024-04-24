@@ -282,7 +282,7 @@
           </div>
           <br>
           <!--------------------------------------------------------------------------- -->
-          <label for="clave"  style="font-weight:bold; color:#37517e;">Elija una clave de referencia, se recomienda de 8 caracteres pueden ser letras o números sin espacios</label>
+          <label for="clave"  style="font-weight:bold; color:#37517e;">Elija una clave de referencia, se recomienda de 8 a 12 caracteres, pueden ser letras o números sin espacios</label>
           <div class ="form-group">
          
             <input type="password" class="form-control" name="clave" id="mi_input" style="display: inline-block; text-transform: lowercase;" required>
@@ -862,14 +862,14 @@ function enviarDatos(){
   }
   </script>
 
-
+<!--volver atras---------------------------------------------------------------------- ------ ----->
 
   <!--para ver si es mayor a 12 caracteres la clave me salga una advertencia---------------->
   <script>
     const inputElement = document.getElementById("mi_input");
     inputElement.addEventListener("input", function() {
-        if (this.value.length > 12) {
-            this.setCustomValidity("La clave debe tener menos de 12 caracteres");
+        if (this.value.length > 12 || this.value.length <8) {
+            this.setCustomValidity("La clave debe tener entre 8 a 12 caracteres");
         } else {
             this.setCustomValidity("");
         }
